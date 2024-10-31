@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: #000;
+}
+
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#birthday-text {
+    font-size: 4em;
+    margin: 20px 0;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.image-container {
+    perspective: 1000px;
+    margin: 20px 0;
+}
+
+.rotating-fan {
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotateFan 20s linear infinite;
+}
+
+.fan-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: rotateY(0deg) translateZ(100px);
+}
+
+button {
+    padding: 12px 25px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff4081, #7c4dff);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+                     0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+                     0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6;
+    }
+}
+
+@keyframes rotateFan {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #birthday-text {
+        font-size: 2.5em;
+    }
+
+    .rotating-fan {
+        width: 150px;
+        height: 150px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+/* 添加聊天界面样式 */
+.chat-container {
+    width: 80%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    backdrop-filter: blur(10px);
+}
+
+.chat-output {
+    height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+#chat-input {
+    flex: 1;
+    min-height: 60px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    resize: vertical;
+}
+
+#chat-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#send-btn {
+    padding: 10px 20px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff4081, #7c4dff);
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.user-message {
+    background: rgba(124, 77, 255, 0.3);
+    margin-left: auto;
+}
+
+.ai-message {
+    background: rgba(255, 64, 129, 0.3);
+    margin-right: auto;
+}
+
+/* 调整原有样式 */
+.content {
+    padding: 40px 20px;
+}
+
+.image-container {
+    margin: 20px 0;
+}
+
+/* 响应式设计补充 */
+@media (max-width: 768px) {
+    .chat-container {
+        width: 95%;
+    }
+    
+    .chat-output {
+        height: 250px;
+    }
+    
+    #chat-input {
+        min-height: 50px;
+    }
+    
+    #send-btn {
+        height: 50px;
+        padding: 8px 15px;
+    }
+} 
